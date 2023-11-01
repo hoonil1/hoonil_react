@@ -1,4 +1,4 @@
-import "../style/yourStyle.css";
+import "../style/yourstyle.module.css";
 export function MyBlock() {
   return (
     <div>
