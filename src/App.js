@@ -1,22 +1,28 @@
+import { MyElem, city } from "./Component/MyElem";
+import age from "./Component/MyElem";
+import MyBox from "./Component/MyBox";
+import { person, country } from "./Component/MyBox";
+// age 대신 이름을 아무렇게나 써도 불러와진다
+// export default 는 하나만 쓸수 있기 때문에
+
 function App() {
   // built-in components
   return (
     <>
-      <MyComp name={"흥민"} address={"신촌"} age={33} city={"서울"} />
-      <MyComp address={"신촌"} age={33} city={"서울"} />
+      <MyElem />
+      <h1>{city}</h1>
+      <h1>{age}</h1>
+      <MyBox />
+      <h1>
+        {person.age}, {person.name}
+      </h1>
+      <h1>{country}</h1>
     </>
   );
 }
 
-//함수 인자로 사용한 곳에서 넘긴 프로퍼티들이 객체형태로 담긴다
-function MyComp({ name = "NoName", address, city, age = 100 }) {
-  return (
-    <div>
-      <p>
-        {name}은 {age}세 이고 {address},{city}에 산다
-      </p>
-    </div>
-  );
+function MyComp() {
+  return null;
 }
 
 export default App;
