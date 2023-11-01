@@ -1,15 +1,11 @@
-import { MyText } from "./Component/MyText";
-import { MyBox } from "./Component/MyBox";
-import { MyContainer } from "./Component/MyContainer";
-import { MyNavbar } from "./Component/MyNavbar";
+import { MyBox, MyElem, MyContainer } from "./Component/MyBox";
 
 function App() {
   return (
     <div>
-      <MyText />
       <MyBox />
+      <MyElem />
       <MyContainer />
-      <MyNavbar />
     </div>
   );
 }
