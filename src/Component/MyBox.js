@@ -1,11 +1,9 @@
-function MyBox() {
+export default function MyBox() {
   return (
     <div>
-      <h1>This is MyBox</h1>
+      <p>this is MyBox</p>
     </div>
   );
 }
-export const country = "France";
-export const person = { name: "LEE", age: 22 };
 
-export default MyBox;
+export const address = "Korea";
