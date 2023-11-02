@@ -1,12 +1,5 @@
-import { MyContainer } from "./Component/MyContainer";
-
 function App() {
-  // built-in components
-  return (
-    <>
-      <MyContainer />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
