@@ -1,55 +1,21 @@
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-  Center,
-  Box,
-  RadioGroup,
-  Radio,
-  Flex,
-  CheckboxGroup,
-  Checkbox,
-} from "@chakra-ui/react";
+import { Box, FormControl, Select, Center } from "@chakra-ui/react";
 
-function App() {
+function App(props) {
   return (
     <div>
-      <Center>
-        <Box w={"400px"}>
+      <Box w={"480px"}>
+        <Center h={"100px"}>
           <FormControl>
-            <FormLabel>Email address</FormLabel>
-            <Input type="email" />
-            <FormHelperText>We'll never share your email.</FormHelperText>
+            <Select placeholder="Select option" h={"50px"}>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+              <option value="option4">Option 4</option>
+              <option value="option5">Option 5</option>
+            </Select>
           </FormControl>
-        </Box>
-      </Center>
-      <Center mt={5}>
-        <FormControl>
-          <FormLabel>Choose Your Favorite Player</FormLabel>
-          <RadioGroup>
-            <Flex gap={2}>
-              <Radio value="value1">C.Ronaldo</Radio>
-              <Radio value="value2">L.Messi</Radio>
-              <Radio value="value3">Neymar JR</Radio>
-              <Radio value="value4">Mbappe</Radio>
-            </Flex>
-          </RadioGroup>
-          <FormHelperText>Choose Just One!</FormHelperText>
-        </FormControl>
-      </Center>
-      <Center mt={5}>
-        <FormControl>
-          <CheckboxGroup>
-            <Flex gap={2}>
-              <Checkbox>SON</Checkbox>
-              <Checkbox>LEE</Checkbox>
-              <Checkbox>KIM</Checkbox>
-            </Flex>
-          </CheckboxGroup>
-        </FormControl>
-      </Center>
+        </Center>
+      </Box>
     </div>
   );
 }
