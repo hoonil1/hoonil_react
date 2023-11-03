@@ -1,18 +1,26 @@
-function MyComp({ text, address, children }) {
-  return (
-    <>
-      <p>{text}</p>
-      <p>{address}</p>
-      <p>{children}</p>
-    </>
-  );
-}
+import React from "react";
+import { Button } from "@chakra-ui/react";
 
+function MyComp({ children, executeClick }) {
+  return <Button onClick={executeClick}>{children}</Button>;
+}
 function App(props) {
+  function func1() {
+    console.log("func1 launched");
+  }
+  let func2 = () => {
+    console.log("arrow function launched");
+  };
   return (
     <div>
-      <MyComp text={"hello"} address={"seoul"}>
-        some content 다른 컴포넌트가 있을수도 있음.
+      <MyComp executeClick={func1}>Button1</MyComp>
+      <MyComp executeClick={func2}>Button2</MyComp>
+      <MyComp
+        executeClick={() => {
+          console.log("arrow2");
+        }}
+      >
+        Button3
       </MyComp>
     </div>
   );
