@@ -2,25 +2,21 @@ import React from "react";
 import { Button } from "@chakra-ui/react";
 
 function App(props) {
-  // 함수의 이름을 작성하는 관습이 있다.
-  // => handle + event 이름 (click, box, etc)
   function handleClick() {
-    console.log("second");
+    console.log("clicked");
   }
-  function handleMouseEnter() {
-    console.log("third");
+  function handleClick2() {
+    console.log("clicked2");
   }
-  function handleMouseLeave() {
-    console.log("fourth");
+  function handleClick3(number) {
+    console.log(number + "번째 버튼 클릭됨");
   }
-
   return (
     <div>
-      <Button onClick={() => console.log("first")}>Button1</Button>
-      <Button onClick={handleClick}>Button2</Button>
-      <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        Button3
-      </Button>
+      <Button onClick={handleClick}>Button1</Button>
+      <Button onClick={handleClick2}>Button2</Button>
+      <Button onClick={() => handleClick3(1)}>Button3</Button>
+      <Button onClick={() => handleClick3(5)}>Button4</Button>
     </div>
   );
 }
