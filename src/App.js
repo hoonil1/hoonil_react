@@ -1,28 +1,26 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
 
-function MyComp({ children, executeClick }) {
-  return <Button onClick={executeClick}>{children}</Button>;
-}
 function App(props) {
-  function func1() {
-    console.log("func1 launched");
+  // 함수의 이름을 작성하는 관습이 있다.
+  // => handle + event 이름 (click, box, etc)
+  function handleClick() {
+    console.log("second");
   }
-  let func2 = () => {
-    console.log("arrow function launched");
-  };
+  function handleMouseEnter() {
+    console.log("third");
+  }
+  function handleMouseLeave() {
+    console.log("fourth");
+  }
+
   return (
     <div>
-      <MyComp executeClick={func1}>Button1</MyComp>
-      <MyComp executeClick={func2}>Button2</MyComp>
-      <MyComp
-        executeClick={() => {
-          console.log("arrow2");
-        }}
-      >
+      <Button onClick={() => console.log("first")}>Button1</Button>
+      <Button onClick={handleClick}>Button2</Button>
+      <Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         Button3
-      </MyComp>
-      <MyComp executeClick={() => console.log("arrow3")}>Button4</MyComp>
+      </Button>
     </div>
   );
 }
