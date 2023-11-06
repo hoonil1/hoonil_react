@@ -1,55 +1,34 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Center,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react";
+import React from "react";
+import { Box, List, ListItem } from "@chakra-ui/react";
 
 function App(props) {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-
-  function handleNameInput(e) {
-    setName(e.target.value);
-  }
-  function handlePasswordInput(e) {
-    setPassword(a.target.value);
-  }
-  function handleEmailInput(e) {
-    setEmail(a.target.value);
-  }
-
+  const arr = ["pizza", "burger"];
+  const arr2 = ["son", "lee", "kim"];
+  const arr3 = ["latte", "americano", "esspresso"];
   return (
-    <Center>
-      <Box w={"480px"}>
-        <FormControl>
-          <FormLabel>Name</FormLabel>
-          <Input type={"text"} value={name} onChange={handelNameInput}></Input>
-          <FormHelperText>띄어쓰기 없이 입력해주세요.</FormHelperText>
-        </FormControl>
-
-        <FormControl>
-          <FormLabel></FormLabel>
-          <Input type="password" onChange={handlePasswordInput}></Input>
-          <FormHelperText>
-            특수기호와 숫자를 하나 이상 하용해주세요
-          </FormHelperText>
-        </FormControl>
-        <FormControl>
-          <FormLabel></FormLabel>
-          <Input type="email" value={email} onChange={handelEmailInput}>
-            {" "}
-          </Input>
-          <FormHelperText>입력된 이메일은 중복될 수 없습니다.</FormHelperText>
-
-          <Button colorScheme={blue}>가입</Button>
-        </FormControl>
+    <div>
+      <Box>
+        <List>
+          {arr.map((e) => (
+            <ListItem>{e}</ListItem>
+          ))}
+        </List>
       </Box>
-    </Center>
+      <Box>
+        <List>
+          {arr2.map((x) => (
+            <ListItem>{x}</ListItem>
+          ))}
+        </List>
+      </Box>
+      <Box>
+        <List>
+          {arr3.map((y) => (
+            <ListItem>{y}</ListItem>
+          ))}
+        </List>
+      </Box>
+    </div>
   );
 }
 
