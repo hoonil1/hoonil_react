@@ -13,7 +13,8 @@ function App() {
 
   function handleDoneButton(id) {
     updateItems((draft) => {
-      draft.findIndex(nextId, 1);
+      const target = items.find((elem) => elem.id === id);
+      target.done = true;
     });
   }
 
