@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -8,7 +8,8 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
+import axios from "axios";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -36,10 +37,27 @@ function Home() {
 function AComp() {
   // 쿼리 스트링을 얻기
   const [searchParams] = useSearchParams();
-  console.log(searchParams);
-  console.log(searchParams.get("id"));
-  console.log(searchParams.toString());
-  return <Box>A Component</Box>;
+  // console.log(searchParams);
+  // console.log(searchParams.get("id"));
+  // console.log(searchParams.toString());
+  const [customer, setCustomer] = useState({});
+
+  useEffect(() => {
+    axios
+      .get("/api/main1/sub4?" + searchParams.toString())
+      .then((response) => setCustomer(response.data))
+      .catch((error) => console.log(error))
+      .finally(() => console.log("good"));
+  }, [searchParams]);
+  return (
+    <Box>
+      {customer && (
+        <Text>
+          {searchParams.get("id")} 번 고객명 : {customer.name}
+        </Text>
+      )}
+    </Box>
+  );
 }
 
 function App(props) {
