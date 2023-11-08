@@ -1,52 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { Box, Select, Spinner, Text } from "@chakra-ui/react";
-import axios from "axios";
+import React from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import { Box } from "@chakra-ui/react";
+
+const routes = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Box>home page</Box>} />
+      <Route path="/path1" element={<Box>경로1</Box>} />
+      <Route path="/path2" element={<Box>경로2</Box>} />
+      <Route path="/path3" element={<Box>경로3</Box>} />
+    </>,
+  ),
+);
 
 function App(props) {
-  const [customerId, setCustomerId] = useState(0);
-  const [customer, setCustomer] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [customerIdList, setCustomerIdList] = useState([]);
-
-  useEffect(() => {
-    // 고객번호들 가져오기
-    axios
-      .get("/api/main1/sub6")
-      .then((response) => setCustomerIdList(response.data));
-  }, []);
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get("/api/main1/sub4?id=" + customerId)
-      .then((response) => response.data)
-      .then((data) => setCustomer(data))
-      .catch(() => setCustomer(null))
-      .finally(() => setIsLoading(false));
-  }, [customerId]);
-  return (
-    <div>
-      <Select
-        placeholder="고객 번호를 선택하세요"
-        onChange={(e) => setCustomerId(e.target.value)}
-      >
-        {customerIdList.map((id) => (
-          <option value={id}>{id}</option>
-        ))}
-      </Select>
-      <Box>
-        {isLoading && <Spinner />}
-        {isLoading || (
-          <>
-            {customer === null ? (
-              <Text>조회한 고객이 없습니다</Text>
-            ) : (
-              <Text>고객 이름 : {customer.name}</Text>
-            )}
-          </>
-        )}
-      </Box>
-    </div>
-  );
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
