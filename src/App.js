@@ -2,58 +2,44 @@ import React from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Link,
   Outlet,
   Route,
   RouterProvider,
   useNavigate,
+  useSearchParams,
 } from "react-router-dom";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<HomeComponent />}>
-      <Route path="apath" element={<AComp />} />
-      <Route path="bpath" element={<BComp />} />
+    <Route path="/" element={<Home />}>
+      <Route path="path1" element={<AComp />} />
     </Route>,
   ),
 );
-
-function HomeComponent() {
-  // 경로 이동시 useNavigate Hook 메소드 사용
+function Home() {
   const navigate = useNavigate();
   return (
     <Box>
-      <Flex gap={"50px"}>
-        <Box>
-          <Button onClick={() => (window.location.href = "/apath")}>
-            {/* 자바스크립트를 이용한 태그 구현 */}
-            A로 이동
-          </Button>
-        </Box>
-        <Box>
-          <Button onClick={() => (window.location.href = "/bpath")}>
-            B로 이동
-          </Button>
-        </Box>
-        <Box>
-          <Button onClick={() => navigate("/apath")}>A로 이동2</Button>
-        </Box>
-        <Box>
-          <Button onClick={() => navigate("/bpath")}>B로 이동2</Button>
-        </Box>
-      </Flex>
-      <Outlet />
+      <Box>
+        <Button onClick={() => navigate("/path1?id=1")}>1번 고객 보기</Button>
+        <Button onClick={() => navigate("/path1?id=2")}>2번 고객 보기</Button>
+        <Button onClick={() => navigate("/path1?id=3")}>3번 고객 보기</Button>
+      </Box>
+      <Box>
+        <Outlet />
+      </Box>
     </Box>
   );
 }
 
 function AComp() {
-  return <Box>A 컴포넌트</Box>;
-}
-
-function BComp() {
-  return <Box>B 컴포넌트</Box>;
+  // 쿼리 스트링을 얻기
+  const [searchParams] = useSearchParams();
+  console.log(searchParams);
+  console.log(searchParams.get("id"));
+  console.log(searchParams.toString());
+  return <Box>A Component</Box>;
 }
 
 function App(props) {
