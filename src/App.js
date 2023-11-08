@@ -6,7 +6,7 @@ function App(props) {
   const [customerId, setCustomerId] = useState(0);
   const [customer, setCustomer] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [customerIdList, setCustomerIdList] = useState({});
+  const [customerIdList, setCustomerIdList] = useState([]);
 
   useEffect(() => {
     // 고객번호들 가져오기
